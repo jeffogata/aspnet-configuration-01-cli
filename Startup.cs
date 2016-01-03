@@ -10,7 +10,8 @@
 
         public Startup() 
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json");
 
             _configuration = builder.Build();
         }
@@ -18,7 +19,8 @@
         public void Configure(IApplicationBuilder app)
         {
             var setting = _configuration["setting"];
-            var defaultConnection = _configuration["data:connectionStrings:default"];
+            var defaultConnection = 
+                _configuration["data:connectionStrings:default"];
 
             app.Run(async context => 
             {
